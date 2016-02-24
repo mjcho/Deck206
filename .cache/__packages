@@ -1,0 +1,9 @@
+base
+XLConnectJars
+XLConnect
+dplyr
+tidyr
+magrittr
+slidify
+knitr
+ggplot2

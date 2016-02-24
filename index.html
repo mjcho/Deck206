@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>An Analysis of the Bachelor Data</title>
+  <meta charset="utf-8">
+  <meta name="description" content="An Analysis of the Bachelor Data">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="libraries/widgets/bootstrap/css/bootstrap.css"></link>
+<link rel=stylesheet href="libraries/widgets/quiz/css/demo.css"></link>
+<link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/bachelor.jpeg">
+  </aside>
+  <hgroup class="auto-fadein">
+    <h1>An Analysis of the Bachelor Data</h1>
+    <h2></h2>
+    <p><br/>COMM 206 In-class Activity</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="DA" style="background:;">
+  <article data-timings="">
+    <style>
+body {
+  background-color: #000;
+}
+.quiz-option label{
+  display: inline;
+  font-size: 1em;
+}
+ul.nav li::before { content: ""; }  
+ul.nav li{ font-size: 18px; line-height: 24px;}
+</style>
+
+<h2>Descriptive Analysis</h2>
+
+<h3>Collected Variables</h3>
+
+<pre><code>##  [1] &quot;Season&quot;            &quot;Showtype&quot;          &quot;Date&quot;             
+##  [4] &quot;Star&quot;              &quot;Star.Age&quot;          &quot;Star.Hair.Color&quot;  
+##  [7] &quot;Star.Occupation&quot;   &quot;Winner&quot;            &quot;Winner.Hair.Color&quot;
+## [10] &quot;Proposal&quot;          &quot;Outcome&quot;
+</code></pre>
+
+<h3>Used Variables</h3>
+
+<pre><code>##  [1] &quot;Season&quot;            &quot;Showtype&quot;          &quot;year&quot;             
+##  [4] &quot;Star.Age&quot;          &quot;Star.Hair.Color&quot;   &quot;Winner.Hair.Color&quot;
+##  [7] &quot;Proposal&quot;          &quot;Outcome&quot;           &quot;duration&quot;         
+## [10] &quot;color.agree&quot;
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="DA2" style="background:;">
+  <hgroup>
+    <h2>Descriptive Analysis</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Proposal by Showtype</h3>
+
+<pre><code>## Source: local data frame [3 x 3]
+## Groups: Showtype
+## 
+##       Showtype Proposal  n
+## 1     Bachelor       No  8
+## 2     Bachelor      Yes 10
+## 3 Bachelorette      Yes 10
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="DA3" style="background:;">
+  <hgroup>
+    <h2>Descriptive Analysis</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Average Show Duration and Age of the Bachelor</h3>
+
+<pre><code>## Source: local data frame [5 x 6]
+## Groups: Showtype, Proposal
+## 
+##       Showtype Proposal Outcome n avg.duration  avg.age
+## 1     Bachelor       No   Apart 8     51.62500 31.12500
+## 2     Bachelor      Yes   Apart 9     60.44444 31.88889
+## 3     Bachelor      Yes Married 1     64.00000 30.00000
+## 4 Bachelorette      Yes   Apart 7     63.42857 28.00000
+## 5 Bachelorette      Yes Married 3     60.66667 28.00000
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="DA4" style="background:;">
+  <hgroup>
+    <h2>Correlations: Age and Show duration with Outcome</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>##   Star.Age   duration 
+## -0.2121486  0.1039581
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="DA5" style="background:;">
+  <hgroup>
+    <h2>Correlations: Age and Show duration with Proposal</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code>##   Star.Age   duration 
+## -0.1746002  0.4326910
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Descriptive Analysis'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Descriptive Analysis'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Correlations: Age and Show duration with Outcome'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Correlations: Age and Show duration with Proposal'>
+         5
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  <script src="libraries/widgets/bootstrap/js/bootstrap.min.js"></script>
+<script src="libraries/widgets/bootstrap/js/bootbox.min.js"></script>
+<script src="libraries/widgets/quiz/js/jquery.quiz.js"></script>
+<script src="libraries/widgets/quiz/js/mustache.min.js"></script>
+<script src="libraries/widgets/quiz/js/quiz-app.js"></script>
+
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<script>  
+  $(function (){ 
+    $("#example").popover(); 
+    $("[rel='tooltip']").tooltip(); 
+  });  
+  </script>  
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

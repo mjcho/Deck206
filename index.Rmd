@@ -1,0 +1,106 @@
+---
+title       : An Analysis of the Bachelor Data
+subtitle    : 
+author      : 
+job         : COMM 206 In-class Activity
+logo        : bachelor.jpeg
+framework   : io2012               # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js         # {highlight.js, prettify, highlight}
+hitheme     : tomorrow             # 
+widgets     : [mathjax, bootstrap, quiz] # {mathjax, quiz, bootstrap}
+mode        : selfcontained        # {standalone, draft}
+knit        : slidify::knit2slides
+--- #DA
+
+<style>
+body {
+  background-color: #000;
+}
+.quiz-option label{
+  display: inline;
+  font-size: 1em;
+}
+ul.nav li::before { content: ""; }  
+ul.nav li{ font-size: 18px; line-height: 24px;}
+</style>
+
+```{r echo=FALSE, message=FALSE}
+library(knitr)
+opts_chunk$set(message=FALSE, tidy=TRUE, warning=FALSE)
+```
+
+```{r echo=FALSE, message=FALSE}
+# load packages and data
+library(XLConnect)
+library(dplyr)
+library(tidyr)
+library(magrittr)
+library(slidify)
+library(ggplot2)
+wb <- loadWorkbook("~/Desktop/16W/COMM 206/data/Bachelor Data.xlsx")
+dat <- readWorksheet(wb, sheet = 1)
+
+# Data Cleaning
+dat %<>% 
+  separate(Date, c("start", "end", "year"), sep = "[–,]") %>% # separate dates
+  mutate_each(funs(as.Date(., "%B %d")), c(start, end)) %>% # generate dates
+  mutate(duration = as.numeric(end - start), 
+         color.agree = Star.Hair.Color == Winner.Hair.Color) %>% # add duration and color.agree
+  filter(Outcome %in%  c("Married", "Apart")) %>% # keep only these two levels
+  select(-c(Col1, matches("star($|t|.o)"), end, Winner)) # select only the relevant columns
+```
+
+## Descriptive Analysis
+### Collected Variables
+```{r echo=FALSE}
+wb <- loadWorkbook("~/Desktop/16W/COMM 206/data/Bachelor Data.xlsx")
+dat2 <- readWorksheet(wb, sheet = 1)
+names(dat2)[-1]
+```
+### Used Variables
+```{r echo=FALSE}
+names(dat)
+```
+
+--- #DA2
+## Descriptive Analysis
+### Proposal by Showtype
+```{r echo=FALSE}
+dat %>%
+  group_by(Showtype, Proposal) %>% 
+  summarise(n = n())
+```
+
+--- #DA3
+## Descriptive Analysis
+### Average Show Duration and Age of the Bachelor
+```{r echo=FALSE}
+dat %>% 
+  group_by(Showtype, Proposal, Outcome) %>% 
+  summarise(n = n(), avg.duration = mean(duration), avg.age = mean(Star.Age))
+```
+
+--- #DA4
+## Correlations: Age and Show duration with Outcome
+```{r echo=FALSE}
+# formatting the variables
+dat %>% 
+  mutate_each(funs(as.factor), Showtype, Proposal, Outcome) %>%
+  mutate_each(funs(as.numeric), c(Season, year, Star.Age, duration)) %>% 
+  mutate_each(funs(as.logical), color.agree) -> dat3
+
+# Correlations with Outcome
+cor.vars <- c("Star.Age", "duration")
+sapply(cor.vars, function(x){cor(dat3[, x], as.numeric(dat3$Outcome))})
+```
+
+--- #DA5
+## Correlations: Age and Show duration with Proposal
+```{r echo=FALSE}
+# Correlations with Outcome
+cor.vars <- c("Star.Age", "duration")
+sapply(cor.vars, function(x){cor(dat3[, x], as.numeric(dat3$Proposal))})
+```
+
+
+
